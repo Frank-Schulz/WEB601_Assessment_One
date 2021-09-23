@@ -1,0 +1,14 @@
+<%-include('partials/header');-%>
+
+<h1>Home page</h1>
+<p><%= startContent%></p>
+<%console.log(products);%>
+
+<% products.forEach(function(product){ %>
+    <h3><%=product.name%></h3>
+    <p><%= product.shortDesc.substring(0,80) + "..."%>
+        <a href="/products/<%=product.name%>">Keep reading!</a>
+    </p>
+<% }) %>
+
+<%-include('partials/footer');-%>

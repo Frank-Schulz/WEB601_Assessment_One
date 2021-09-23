@@ -1,17 +1,18 @@
 require('dotenv').config()
 
-const connectDB = require('../Config/db')
+// const connectDB = require('../Config/db')
+// connectDB();
 
-const usersData = require("../data/usersData")
-const Users = require("../model/users")
-
-connectDB();
+const usersData = require("../data/users.data")
+const Users = require("../model/users.model")
 
 const importData = async () => {
     try {
         await Users.deleteMany()
 
         await Users.insertMany(usersData)
+
+        console.log("Users seeded successfully");
 
         process.exit();
 
@@ -22,3 +23,5 @@ const importData = async () => {
 };
 
 importData();
+
+module.exports = importData;
