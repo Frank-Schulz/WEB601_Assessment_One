@@ -3,8 +3,8 @@ require('dotenv').config()
 // const connectDB = require('../Config/db')
 // connectDB();
 
-const productsData = require("../data/productsData")
-const Products = require("../model/products")
+const productsData = require("../data/products.data")
+const Products = require("../model/products.model")
 
 const importData = async () => {
     try {
@@ -14,7 +14,7 @@ const importData = async () => {
 
         console.log("Products seeded successfully");
 
-        process.exit();
+        // process.exit();
 
     } catch (error) {
         console.error(error);

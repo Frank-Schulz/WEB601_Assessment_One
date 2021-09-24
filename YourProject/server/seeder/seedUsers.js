@@ -14,7 +14,7 @@ const importData = async () => {
 
         console.log("Users seeded successfully");
 
-        process.exit();
+        // process.exit();
 
     } catch (error) {
         console.error(error);
