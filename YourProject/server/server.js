@@ -7,7 +7,6 @@ const _ = require('lodash');
 const { notFound, errorHandler } = require('./middlewares/error.middleware')
 const connectDB = require("./config/db");
 
-
 require("dotenv").config();
 
 /* ------------------------------- ANCHOR Page Content ------------------------------- */
@@ -19,6 +18,7 @@ const products = require("./data/products.data");
 
 /* ------------------------------- ANCHOR Get Routes ------------------------------- */
 const userRoutes = require("./routes/user.routes");
+const { removeListener } = require("./model/users.model");
 
 // console.log("Hello", process.env.PORT);
 
@@ -33,7 +33,7 @@ app.use(express.static('public'));
 
 connectDB()
 
-// require("./seeder/seedAll");
+require("./seeder/seedAll");
 
 /* --------------------------------- ANCHOR App Get -------------------------------- */
 
@@ -44,17 +44,37 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/login", (req, res) => {
+    res.render('login');
+});
+
+app.get("/register", (req, res) => {
+    res.render('register');
+});
+
+app.get("/products", (req, res) => {
+    res.render('products', {
+        products: products,
+    });
+});
+
 app.get('/products/:parameter', function (req, res) {
-    const requestTitle = _.lowerCase(req.params.parameter) // lowercase 
+    const requestTitle = _.lowerCase(req.params.parameter) // lowercase
 
     products.forEach(function (product) {
-        const storedTitle = _.lowerCase(product.title)
+        const storedTitle = _.lowerCase(product.id)
         if (storedTitle === requestTitle) {
             res.render('product', {
-                title: product.title,
-                content: product.content
+                name: product.name,
+                price: product.price,
+                stock: product.stock,
+                description: product.description,
             })
         }
+    });
+    // If product is not found in the database
+    res.render('404', {
+        message: 'Product not found'
     });
 });
 
