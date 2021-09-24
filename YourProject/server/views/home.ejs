@@ -5,10 +5,12 @@
 <%console.log(products);%>
 
 <% products.forEach(function(product){ %>
-    <h3><%=product.name%></h3>
-    <p><%= product.shortDesc.substring(0,80) + "..."%>
-        <a href="/products/<%=product.name%>">Keep reading!</a>
-    </p>
+    <% if (product.live) { %>
+        <h3><%=product.name%></h3>
+        <p><%= product.description.substring(0,80) + "..."%>
+            <a href="/products/<%=product.id%>">Keep reading!</a>
+        </p>
+    <% } %>
 <% }) %>
 
 <%-include('partials/footer');-%>
