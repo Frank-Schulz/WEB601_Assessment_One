@@ -1,0 +1,14 @@
+<%-include('partials/header');-%>
+
+<h1><%= name %></h1>
+<h3>$<%= price %></h3>
+
+<% if (price) { %>
+    <h3>In Stock</h3>
+<% } else { %>
+    <h3>Out of Stock</h3>
+<% } %>
+
+<p><%= description %></p>
+
+<%-include('partials/footer');-%>
