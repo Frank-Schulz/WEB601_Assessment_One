@@ -44,7 +44,6 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(201).json({
             _id: user._id,
             email,
-            password,
             isAdmin,
             firstName,
             lastName,
@@ -69,26 +68,24 @@ const authUser = asyncHandler(async (req, res) => {
     const user = await User.findOne({ email });
 
     if (user && (await user.matchPassword(password))) {
-        res.json({
-            _id: user._id,
-            email,
-            password,
-            isAdmin,
-            firstName,
-            lastName,
-            addresses: [ {
-                city,
-                state,
-                zip,
-                country,
-                address,
-                address2
-            } ],
-            token: generateToken(user._id),
+        // res.json({
+        //     _id: user._id,
+        //     email: user.email,
+        //     password: user.password,
+        //     isAdmin: user.isAdmin,
+        //     firstName: user.firstName,
+        //     lastName: user.lastName,
+        //     addresses: user.addresses,
+        //     token: generateToken(user._id),
+        // });
+        res.render('home', {
+            startContent: "Logged in",
+            products: require("../data/products.data"),
         });
     } else {
         res.status(400);
         throw new Error("Invalid email or password!");
+
     }
 });
 
