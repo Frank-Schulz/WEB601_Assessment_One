@@ -1,6 +1,6 @@
-<%-include('partials /header');-%>
+<%-include('partials/header');-%>
 
-<h1>Sign up</h1>
+<h1>Register</h1>
 <form action="/api/users" method="POST">
     <div class="form-group">
         <label>Email</label>
@@ -18,8 +18,10 @@
         <input type="text" class="form-control" name="password" placeholder="">
     </div>
 
-    <button type="submit" class="btn btn-primary" name="button">Sign up</button>
+    <button type="submit" class="btn btn-primary" name="button">Register</button>
 
 </form>
 
-<%-include('partials /footer');-%>
+<button class="btn btn-primary" name="button"><a href="/login">Login</a></button>
+
+<%-include('partials/footer');-%>
