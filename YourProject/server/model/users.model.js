@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema(
         email: {
             type: 'string',
             trim: true,
-            required: true
+            required: true,
+            unique: true,
         },
         password: {
             type: 'string',
@@ -27,6 +28,10 @@ const userSchema = new mongoose.Schema(
             type: 'string',
             trim: true,
             required: true
+        },
+        DoB: {
+            type: Date,
+            required: true,
         },
         addresses: [ {
             city: {

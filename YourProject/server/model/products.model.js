@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema(
     {
+        id: {
+            type: 'string',
+            required: true,
+            unique: true,
+        },
         name: {
             type: 'string',
             required: true
@@ -10,21 +15,21 @@ const productSchema = new mongoose.Schema(
             type: 'number',
             required: true
         },
-        cartDesc: {
-            type: 'string'
-        },
-        shortDesc: {
+        // cartDesc: {
+        //     type: 'string'
+        // },
+        // shortDesc: {
+        //     type: 'string',
+        //     required: true
+        // },
+        description: {
             type: 'string',
             required: true
         },
-        longDesc: {
-            type: 'string',
-            required: true
-        },
-        thumbPath: {
-            type: 'string',
-            required: true
-        },
+        // thumbPath: {
+        //     type: 'string',
+        //     required: true
+        // },
         imagePath: {
             type: 'string',
             required: true
