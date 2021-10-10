@@ -1,0 +1,31 @@
+<%-include('../partials/header');-%>
+
+<h1>Edit Product Details</h1>
+
+<form action="../../products/update/<%= product._id %>" method="POST">
+    <p>Name:</p>
+    <input type="text" name="name" value="<%= product.name %>">
+
+    <p>Price:</p>
+    <input type="text" name="price" value="<%= product.price %>">
+
+    <p>Description</p>
+    <input type="text" name="description" value="<%= product.description %>">
+
+    <p>ImagePath:</p>
+    <input type="text" name="imagePath" value="<%= product.imagePath %>">
+
+    <p>Stock:</p>
+    <input type="text" name="stock" value="<%= product.stock %>">
+
+    <p>Live:</p>
+    <input type="text" name="live" value="<%= product.live %>">
+
+    <p>Unlimited:</p>
+    <input type="text" name="unlimited" value="<%= product.unlimited %>">
+
+
+    <button type="submit" class="btn btn-primary" name="button">Submit</button>
+</form>
+
+<%-include('../partials/footer');-%>

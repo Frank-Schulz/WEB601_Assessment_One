@@ -1,3 +1,4 @@
+// throw new Error
 const faker = require('faker');
 
 let productsData = [
@@ -17,7 +18,7 @@ let productsData = [
 
 for (var i = 0; i < 100; i++) {
     productsData.push({
-        id: faker.datatype.uuid(),
+        _id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
         price: faker.commerce.price(),
         description: faker.commerce.productDescription(),

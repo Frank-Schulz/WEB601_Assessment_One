@@ -1,7 +1,12 @@
 <%-include('partials/header');-%>
 
 <h1>Register</h1>
-<form action="/api/users" method="POST">
+
+<% if (errorMessage) { %>
+    <p><%= errorMessage %> </p>
+<% } %>
+
+<form action="/users/register" method="POST">
     <div class="form-group">
         <label>Email</label>
         <input type="text" class="form-control" name="email" placeholder="">
@@ -14,6 +19,14 @@
             <input name="lastName" type="text" class="form-control" placeholder="">
         </div>
 
+        <label>Date of Birth</label>
+        <select name="DoB" class="form-control" placeholder="">
+            <% currentYear = new Date().getFullYear() %> 
+            <% for( let DoB = currentYear-80; DoB <currentYear; DoB++ ) { %>
+                <option value="<%= DoB %>"><%= DoB %></option>
+            <% } %>
+        </select>
+
         <label>Password</label>
         <input type="text" class="form-control" name="password" placeholder="">
     </div>
@@ -22,6 +35,6 @@
 
 </form>
 
-<button class="btn btn-primary" name="button"><a href="/login">Login</a></button>
+<button class="btn btn-primary" name="button"><a href="/users/login">Login</a></button>
 
 <%-include('partials/footer');-%>

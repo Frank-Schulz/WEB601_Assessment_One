@@ -3,6 +3,8 @@ const seedAll = async () => {
     require('./seedProducts');
 }
 
+console.log("all seeded");
+
 seedAll();
 
 module.exports = seedAll;

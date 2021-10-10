@@ -50,11 +50,11 @@ const userSchema = new mongoose.Schema(
                 type: 'string',
                 trim: true
             },
-            address: {
+            streetName: {
                 type: 'string',
                 trim: true
             },
-            address2: {
+            streetAddress: {
                 type: 'string',
                 trim: true
             }
@@ -65,17 +65,23 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-userSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) {
-        next();
-    }
+// userSchema.pre('save', async (next) => {
+//     if (!this.isModified('password')) {
+//         next();
+//     }
 
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-});
+//     const salt = await bcrypt.genSalt(10);
+//     this.password = await bcrypt.hash(this.password, salt);
+// });
 
-userSchema.methods.matchPassword = async function (enteredPassword) {
-    return await bcrypt.compare(enteredPassword, this.password);
+// userSchema.methods.matchPassword = async (enteredPassword) => {
+//     console.log('compare:   ', enteredPassword, this.password);
+//     return await bcrypt.compare(enteredPassword, this.password)
+//         .catch(err => {console.log(err);});
+// };
+
+userSchema.methods.matchPassword = (enteredPassword, userPassword) => {
+    return enteredPassword == userPassword
 };
 
 const User = mongoose.model('User', userSchema);

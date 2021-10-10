@@ -1,0 +1,16 @@
+{
+    "email": "frank@example.com",
+    "password": "Password123",
+    "firstName": "frank",
+    "lastName": "user",
+    "addresses": [
+        {
+            "city": "Nelson",
+            "state": "Nelson",
+            "zip": "7010",
+            "country": "New Zealand",
+            "address": "Nikau Apartments",
+            "address2": "85 Nile Street"
+        }
+    ]
+}

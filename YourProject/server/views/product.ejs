@@ -1,14 +1,34 @@
 <%-include('partials/header');-%>
 
-<h1><%= name %></h1>
-<h3>$<%= price %></h3>
+<% if (user.isAdmin) { %>
+    <p><a href="edit/<%= product._id %>">Edit Product</a></p>
 
-<% if (price) { %>
+    <form action="../product/edit_product" method="GET">
+        <input type="text" name="productId" value="<% product._id %>" hidden>
+        <button type="submit" name="editProduct">Edit Product</button>
+    </form>
+<% } %>
+
+<h1><%= product.name %></h1>
+<h3>$<%= product.price %></h3>
+
+<% if (product.price) { %>
     <h3>In Stock</h3>
 <% } else { %>
     <h3>Out of Stock</h3>
 <% } %>
 
-<p><%= description %></p>
+<% if (user) { %>
+    <%= errorMessage ? errorMessage : '' %>
+
+    <form action="../cart/add" method="POST">
+        <input type="text" name="productId" value="<%= product._id %>" hidden>
+        <button type="submit" name="addToCart">Add to Cart</button>
+    </form>
+<% } else { %>
+    <p>Please log in to add this to your cart</p>
+<% } %>
+
+<p><%= product.description %></p>
 
 <%-include('partials/footer');-%>

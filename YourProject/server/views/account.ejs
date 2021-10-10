@@ -1,0 +1,26 @@
+<%-include('partials/header');-%>
+
+<h1>Account</h1>
+
+<p>Email: <%= email %> </p>
+<p>First Name: <%= firstName %> </p>
+<p>Last Name: <%= lastName %> </p>
+<p>Date of Birth: <%= DoB %> </p>
+
+<% console.log(email) %> 
+
+<% let count = 1 %> 
+<% addresses.forEach(address => { %>
+    <div class="address-group">
+        <h4>Address <%= count++ %></h4>
+        <p>Zip Code: <%= address.zip %></p>
+        <p>Street name: <%= address.streetName %></p>
+        <p>Street address: <%= address.streetAddress %></p>
+        <p>City: <%= address.city %></p>
+        <p>State: <%= address.state %></p>
+    </div>
+<% }) %>
+
+<button><a href="/users/account/edit-details">Edit Account Details</a></button>
+
+<%-include('partials/footer');-%>

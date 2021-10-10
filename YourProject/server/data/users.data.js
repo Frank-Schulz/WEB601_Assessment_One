@@ -13,8 +13,8 @@ let usersData = [
             state: "Nelson",
             zip: "7010",
             country: "New Zealand",
-            address: "Nikau Apartments",
-            address2: "85 Nile Street"
+            streetName: "Nikau Apartments",
+            streetAddress: "85 Nile Street"
         } ],
     },
 ];
@@ -32,8 +32,8 @@ for (let i = 0; i < 10; i++) {
             state: faker.address.state(),
             zip: faker.address.zipCode(),
             country: faker.address.country(),
-            address: faker.address.streetName(),
-            address2: faker.address.streetAddress(),
+            streetName: faker.address.streetName(),
+            streetAddress: faker.address.streetAddress(),
         } ],
     });
 };

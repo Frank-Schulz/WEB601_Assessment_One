@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema(
     {
-        id: {
+        _id: {
             type: 'string',
             required: true,
-            unique: true,
         },
         name: {
             type: 'string',
@@ -15,21 +14,10 @@ const productSchema = new mongoose.Schema(
             type: 'number',
             required: true
         },
-        // cartDesc: {
-        //     type: 'string'
-        // },
-        // shortDesc: {
-        //     type: 'string',
-        //     required: true
-        // },
         description: {
             type: 'string',
             required: true
         },
-        // thumbPath: {
-        //     type: 'string',
-        //     required: true
-        // },
         imagePath: {
             type: 'string',
             required: true

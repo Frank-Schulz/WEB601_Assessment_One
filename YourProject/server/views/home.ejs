@@ -8,7 +8,7 @@
     <% if (product.live) { %>
         <h3><%=product.name%></h3>
         <p><%= product.description.substring(0,80) + "..."%>
-            <a href="/products/<%=product.id%>">Keep reading!</a>
+            <a href="/products/<%=product._id%>">Keep reading!</a>
         </p>
     <% } %>
 <% }) %>

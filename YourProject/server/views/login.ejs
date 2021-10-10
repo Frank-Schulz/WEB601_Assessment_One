@@ -1,19 +1,24 @@
 <%-include('partials/header');-%>
 
 <h1>Login</h1>
-<form action="/api/users/login" method="POST">
+
+<% if (errorMessage) { %>
+    <p><%= errorMessage %> </p>
+<% } %>
+
+<form action="/users/login" method="POST">
     <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" name="email" placeholder="">
+        <input type="text" class="form-control" name="email" placeholder="" value="<%= email ? email : '' %>" required>
 
         <label>Password</label>
-        <input type="text" class="form-control" name="password" placeholder="">
+        <input type="text" class="form-control" name="password" placeholder="" required>
     </div>
 
     <button type="submit" class="btn btn-primary" name="button">Login</button>
 
 </form>
 
-<button class="btn btn-primary" name="button"><a href="/register">Register</a></button>
+<button class="btn btn-primary" name="button"><a href="/users/register">Register</a></button>
 
 <%-include('partials/footer');-%>

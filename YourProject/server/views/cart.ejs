@@ -1,0 +1,16 @@
+<%-include('partials/header');-%>
+
+<h1><%= firstName %>'s Cart</h1>
+
+<div class="cart-group">
+
+    <% count = 1 %>
+    <% cartProducts.forEach(product => { %>
+        <div class="cart-item">
+            <p><%= count++ %>: <%= product._id.name %>  $<%= product._id.price %>      #<%= product.quantity %></p>
+        </div>
+    <% }) %>
+
+</div>
+
+<%-include('partials/footer');-%>
