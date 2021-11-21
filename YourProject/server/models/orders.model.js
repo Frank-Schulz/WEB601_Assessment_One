@@ -1,52 +1,64 @@
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-    OrderShipName: {
+    userName: {
         type: 'string',
         required: true
     },
-    OrderShipAddress: {
+    userEmail: {
         type: 'string',
         required: true
     },
-    OrderShipAddress2: {
-        type: 'string',
-        required: true
-    },
-    OrderCity: {
-        type: 'string',
-        required: true
-    },
-    OrderState: {
-        type: 'string'
-    },
-    OrderZip: {
-        type: 'string',
-        required: true
-    },
-    OrderCountry: {
-        type: 'string',
-        required: true
-    },
-    OrderShipping: {
+    price: {
         type: 'number',
         required: true
     },
-    OrderEmail: {
+    products: [ {
+        name: {
+            type: 'string'
+        },
+        price: {
+            type: 'number'
+        }
+    } ],
+    shipAddress: {
         type: 'string',
         required: true
     },
-    OrderDate: {
+    shipAddress2: {
+        type: 'string',
+        required: true
+    },
+    city: {
+        type: 'string',
+        required: true
+    },
+    state: {
+        type: 'string'
+    },
+    zip: {
+        type: 'string',
+        required: true
+    },
+    country: {
+        type: 'string',
+        required: true
+    },
+    shippingCost: {
+        type: 'number',
+        required: true
+    },
+    date: {
         timestamp: true,
         required: true
     },
-    OrderShipped: {
+    shipped: {
         type: 'date'
     },
-    OrderTrackingNumber: {
+    trackingNumber: {
         type: 'number',
     }
 });
 
-const orders = mongoose.model("order", orderSchema);
-module.exports = orders;
+const Orders = mongoose.model("order", orderSchema);
+module.exports = Orders;

@@ -1,27 +1,27 @@
 const express = require('express');
-const { isAdmin } = require('../controllers/admin.controllers');
+const {
+    showAdminPage,
+    showAddProductPage,
+    showOrderManagementPage,
+    showOrderPage,
+    performEditOrder } = require('../controllers/admin.controllers');
 const router = express.Router();
 
 
-router.get("/", isAdmin);
+// GET route ==> to check if the current user is an admin
+router.get("/", showAdminPage);
 
-/* -------------------------------- Products -------------------------------- */
-router.get("/manage_products", (req, res) => {
-    res.render("admin/manageProducts")
-});
+// GET route ==> to show the add product page
+router.get("/add_product", showAddProductPage);
 
-router.get("/manage_products/add_product", (req, res) => {
-    res.render("admin/addProduct")
-});
+// GET route ==> to show the order management page
+router.get("/manage_orders", showOrderManagementPage);
 
-router.get("/manage_products/edit_product", (req, res) => {
-    res.render("admin/editProduct")
-});
+// GET route ==> to show an order page
+router.get("/manage_orders/:parameter", showOrderPage);
 
-/* --------------------------------- Orders --------------------------------- */
-router.get("/manage_orders", (req, res) => {
-    res.render("admin/manageOrders")
-});
+// POST route ==> to edit an order
+router.post("/manage_orders/:parameter", performEditOrder);
 
 
 module.exports = router;

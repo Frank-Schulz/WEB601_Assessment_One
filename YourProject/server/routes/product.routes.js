@@ -1,25 +1,28 @@
 const express = require('express');
-const { browseProducts, searchProducts, getProductPage, addProduct, editProduct, updateProduct } = require('../controllers/product.controllers');
+const {
+    showBrowseProductsPage,
+    showProductPage,
+    performProductAdd,
+    performProductUpdate,
+    performProductDelete
+} = require('../controllers/product.controllers');
 const router = express.Router();
 
 
-// Display the main product page
-router.get("/", browseProducts);
+// GET route ==> to show the products page
+router.get("/", showBrowseProductsPage);
 
-// Display the main product page
-router.get("/search/", searchProducts);
+// GET route ==> Display product that matches the id in the url
+router.get('/:parameter', showProductPage);
 
-// Display product that matches the id in the url
-router.get('/:parameter', getProductPage);
+// POST route ==> Add a new product to the database
+router.post('/add_product', performProductAdd);
 
-// Add a new product to the database
-router.post('/add_product', addProduct);
+// POST route ==> Update the details of the product
+router.post('/update/:parameter', performProductUpdate);
 
-// Load an edit page for the product
-router.get('/edit/:parameter', editProduct);
-
-// Update the details of the product
-router.post('/update/:parameter', updateProduct);
+// POST route ==> Delete a product
+router.delete('/delete/:parameter', performProductDelete);
 
 
 module.exports = router;

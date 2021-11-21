@@ -1,39 +1,39 @@
 const faker = require('faker');
 
-let usersData = [
-    {
-        email: "admin@example.com",
-        password: "Password123",
-        isAdmin: true,
-        firstName: "Frank",
-        lastName: "Admin",
-        DoB: "11/09/1999",
-        addresses: [ {
-            city: "Nelson",
-            state: "Nelson",
-            zip: "7010",
-            country: "New Zealand",
-            streetName: "Nikau Apartments",
-            streetAddress: "85 Nile Street"
-        } ],
-    },
-];
+let usersData = [ {
+    email: "admin@example.com",
+    password: "Password123",
+    isAdmin: true,
+    fullName: "Frank Schulz",
+    // firstName: "Frank",
+    // lastName: "Schulz",
+    DoB: "11/09/1999",
+    addresses: [ {
+        name: "Address 1",
+        streetName: "Nikau Apartments",
+        streetAddress: "85 Nile Street",
+        city: "Nelson",
+        zip: "7010",
+        state: "Nelson",
+        country: "New Zealand",
+    } ],
+}, ];
 
 for (let i = 0; i < 10; i++) {
     usersData.push({
         email: faker.internet.email(),
         password: faker.internet.password(),
         isAdmin: faker.datatype.boolean(),
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
+        fullName: `${faker.name.firstName()} ${faker.name.lastName()}`,
         DoB: faker.date.past(),
         addresses: [ {
-            city: faker.address.city(),
-            state: faker.address.state(),
-            zip: faker.address.zipCode(),
-            country: faker.address.country(),
+            name: `Address 1`,
             streetName: faker.address.streetName(),
             streetAddress: faker.address.streetAddress(),
+            city: faker.address.city(),
+            zip: faker.address.zipCode(),
+            state: faker.address.state(),
+            country: faker.address.country(),
         } ],
     });
 };

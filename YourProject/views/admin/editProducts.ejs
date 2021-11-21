@@ -1,6 +1,9 @@
 <%-include('../partials/header');-%>
 
 <h1>Edit Product Details</h1>
+<form method="POST">
+    <button>Delete</button>
+</form>
 
 <form action="../../products/update/<%= product._id %>" method="POST">
     <p>Name:</p>

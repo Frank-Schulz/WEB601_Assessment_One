@@ -1,0 +1,33 @@
+.landing {
+  min-height: calc(93vh - (96px));
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 95px;
+}
+.subtitle {
+  font-size: 25px;
+  padding-top: 10px;
+}
+.intro-text {
+  width: 100%;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.landingbutton {
+  width: 200px;
+  height: 55px;
+}
+
+@media screen and (max-width: 1000px) {
+  .title {
+    font-size: 50px;
+  }
+}

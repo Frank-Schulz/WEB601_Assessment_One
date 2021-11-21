@@ -1,46 +1,50 @@
 const express = require('express');
 const {
-    registerUser,
-    authUser,
-    account,
-    editDetails,
-    updateDetails,
-    logout } = require('../controllers/user.controllers');
+    showLoginPage,
+    showRegisterPage,
+    showAccountPage,
+    performUserAuthentication,
+    performLogout,
+    performUserRegistration,
+    performUpdateUserDetails,
+    performAddAddress,
+    performDeleteAddress,
+    performDeleteAccount, } = require('../controllers/user.controllers');
+
 const router = express.Router();
 
-router.get('/', (reg, res) => {
-    res.redirect('/')
-})
+/* ------------------------------- GET ROUTES ------------------------------- */
 
-router.get("/register", (req, res) => {
-    res.render('register', {
-        errorMessage: ""
-    });
-});
+// GET route ==> to show the login page
+router.get("/login", showLoginPage);
 
-router.get("/login", (req, res) => {
-    res.render('login', {
-        email: "",
-        errorMessage: ""
-    });
-});
+// GET route ==> to show the register page
+router.get("/register", showRegisterPage);
 
-// 1. POST route ==> to register the user
-router.post('/register', registerUser);
+// GET route ==> to render the profile page of the user.
+router.get("/account", showAccountPage);
 
-// 2. POST route ==> to log in user
-router.post('/login', authUser);
+/* ------------------------------- POST ROUTES ------------------------------ */
 
-// 3. GET route ==> to render the profile page of the user.
-router.get("/account/", account);
+// POST route ==> to log in user
+router.post('/login', performUserAuthentication);
 
-// 4. GET route ==> to render the edit details page of the account.
-router.get("/account/edit-details", editDetails);
+// POST route ==> to log out user and destroy the session
+router.post("/logout", performLogout);
 
-// 5. POST route ==> to edit the account details.
-router.post("/account/edit-details", updateDetails);
+// POST route ==> to register the user
+router.post('/register', performUserRegistration);
 
-// 6. POST route ==> to log out user and destroy the session
-router.post("/logout", logout);
+// POST route ==> to edit the account details.
+router.post("/account/editDetails", performUpdateUserDetails);
+
+// POST route ==> to add an address to the account
+router.post("/account/address", performAddAddress);
+
+// POST route ==> to remove an address from the account
+router.post("/account/deleteAddress", performDeleteAddress);
+
+// POST route ==> to delete the account
+router.post("/account/delete", performDeleteAccount);
 
 module.exports = router;

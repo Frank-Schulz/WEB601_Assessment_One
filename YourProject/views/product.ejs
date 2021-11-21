@@ -2,11 +2,6 @@
 
 <% if (user.isAdmin) { %>
     <p><a href="edit/<%= product._id %>">Edit Product</a></p>
-
-    <form action="../product/edit_product" method="GET">
-        <input type="text" name="productId" value="<% product._id %>" hidden>
-        <button type="submit" name="editProduct">Edit Product</button>
-    </form>
 <% } %>
 
 <h1><%= product.name %></h1>
