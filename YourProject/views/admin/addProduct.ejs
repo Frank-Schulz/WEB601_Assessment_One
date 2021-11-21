@@ -1,0 +1,31 @@
+<%-include('../partials/header');-%>
+
+<h1>Add Product</h1>
+
+<form action="../../products/add_product" method="POST">
+    <p>Name:</p>
+    <input type="text" name="name" value="">
+
+    <p>Price:</p>
+    <input type="text" name="price" value="">
+
+    <p>Description</p>
+    <input type="text" name="description" value="">
+
+    <p>ImagePath:</p>
+    <input type="text" name="imagePath" value="">
+
+    <p>Stock:</p>
+    <input type="text" name="stock" value="">
+
+    <p>Live:</p>
+    <input type="text" name="live" value="">
+
+    <p>Unlimited:</p>
+    <input type="text" name="unlimited" value="">
+
+
+    <button type="submit" class="btn btn-primary" name="button">Submit</button>
+</form>
+
+<%-include('../partials/footer');-%>

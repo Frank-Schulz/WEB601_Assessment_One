@@ -1,0 +1,35 @@
+.products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 1em;
+}
+.card {
+  background-color: var(--bs-light);
+}
+.card-body {
+  color: var(--bs-dark);
+}
+.card a {
+  color: var(--bs-dark);
+  /* font-size: 1rem; */
+}
+
+#search,
+#search:hover,
+#search:active,
+#search:focus,
+#search::placeholder {
+  color: var(--bs-dark);
+}
+
+.form-control-borderless {
+  border: none;
+}
+.form-control-borderless:hover,
+.form-control-borderless:active,
+.form-control-borderless:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}

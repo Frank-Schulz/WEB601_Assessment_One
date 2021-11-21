@@ -1,10 +1,14 @@
+const seedUsers = require('./seedUsers')
+const seedProducts = require('./seedProducts')
+
+// Caller for the various seeder functions
 const seedAll = async () => {
-    require('./seedUsers');
-    require('./seedProducts');
+    console.log("Seeding database with test data...");
+
+    await seedUsers();
+    await seedProducts();
+
+    console.log("Data seeded successfully!");
 }
-
-console.log("all seeded");
-
-seedAll();
 
 module.exports = seedAll;

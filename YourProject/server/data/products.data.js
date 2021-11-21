@@ -1,20 +1,6 @@
-// throw new Error
 const faker = require('faker');
 
-let productsData = [
-    // {
-    //     name: "ProductOne",
-    //     price: 100.00,
-    //     // cartDesc: "Lorem ipsum dolor sit amet, consectetur adip",
-    //     // shortDesc: "Lorem ipsum dolor sit amet",
-    //     description: "Lorem ipsum dolor sit amet",
-    //     // thumbPath: "../images/products/thumb/productOne",
-    //     imagePath: "../images/products/productOne",
-    //     stock: 2314,
-    //     live: true,
-    //     unlimited: false,
-    // }
-];
+let productsData = [];
 
 for (var i = 0; i < 100; i++) {
     productsData.push({

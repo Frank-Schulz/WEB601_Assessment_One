@@ -4,9 +4,18 @@ const Users = require('../models/users.model');
 const Products = require('../models/products.model');
 
 
-async function getUser(req) {
+async function getUser(req, res) {
     return await Users.findOne({ email: req.session.user })
-        .then((user) => { return user; });
+        .then((user) => {
+            if (user) {
+                return user;
+            } else {
+                res.render("login", {
+                    email: "",
+                    errorMessage: "Please log in to access the cart",
+                });
+            }
+        });
 }
 
 async function getUserCart(userId) {
@@ -25,7 +34,7 @@ async function getProduct(req) {
 //@access          Public
 const showCart = asyncHandler(async (req, res) => {
     // Get user object
-    const user = await getUser(req);
+    const user = await getUser(req, res);
 
     // Get users cart object
     const userCart = await getUserCart(user.email);
@@ -39,9 +48,9 @@ const showCart = asyncHandler(async (req, res) => {
 //@description     Add a product to the user's cart
 //@route           POST /cart/add
 //@access          Public
-const addToCart = asyncHandler(async (req, res) => {
+const performAddToCart = asyncHandler(async (req, res) => {
     // Get user object
-    const user = await getUser(req);
+    const user = await getUser(req, res);
 
     const product = await getProduct(req)
 
@@ -83,9 +92,9 @@ const addToCart = asyncHandler(async (req, res) => {
 //@description     Update a product's quantity in the user's cart
 //@route           GET /cart/update
 //@access          Public
-const updateQuantity = asyncHandler(async (req, res) => {
+const performUpdateQuantity = asyncHandler(async (req, res) => {
     // Get user object
-    const user = await getUser(req);
+    const user = await getUser(req, res);
 
     // Get users cart object
     const userCart = await getUserCart(user.email);
@@ -101,9 +110,9 @@ const updateQuantity = asyncHandler(async (req, res) => {
 //@description     Remove product from the user's cart
 //@route           GET /cart/remove
 //@access          Public
-const removeFromCart = asyncHandler(async (req, res) => {
+const performRemoveFromCart = asyncHandler(async (req, res) => {
     // Get user object
-    const user = await getUser(req);
+    const user = await getUser(req, res);
 
     // Get users cart object
     const userCart = await getUserCart(user.email);
@@ -118,8 +127,8 @@ const removeFromCart = asyncHandler(async (req, res) => {
 
 module.exports = {
     showCart,
-    addToCart,
-    updateQuantity,
-    removeFromCart,
+    performAddToCart,
+    performUpdateQuantity,
+    performRemoveFromCart,
 };
 
